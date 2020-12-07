@@ -7,6 +7,9 @@ public class Range implements IntegerSequence{
     current = start;
   }
   public void reset(){
+    this.start = 0;
+    this.end = 0;
+    current = 0;
   }
   public int length(){
     return 0;
