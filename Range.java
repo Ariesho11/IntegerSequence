@@ -12,10 +12,13 @@ public class Range implements IntegerSequence{
     current = 0;
   }
   public int length(){
-    return 0;
+    int diff = Math.abs(end - start);
+    if(diff == 1) return diff+2;
+    if(diff == 0) return 0;
+    return diff+1;
   }
   public boolean hasNext(){
-    return true;
+    return(current!=end);;
   }
 
   //@throws NoSuchElementException
