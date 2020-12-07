@@ -18,12 +18,13 @@ public class Range implements IntegerSequence{
     return diff+1;
   }
   public boolean hasNext(){
-    return(current!=end);;
+    return(current != end);
   }
 
   //@throws NoSuchElementException
-  public int next(){
-    return 0;
+  public int next()throws NoSuchElementException{
+   if (hasNext()) current++;
+   return current;
   }
 
 }
