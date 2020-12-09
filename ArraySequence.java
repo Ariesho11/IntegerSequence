@@ -5,13 +5,16 @@ public class ArraySequence implements IntegerSequence{
 
   /*Construct the sequence by copying values from the other array into the data array*/
   public ArraySequence(int[] other){
-    data = other;
+    data = new int[other.length];
+    for(int i = 0; i < other.length; i++){
+      data[i] = other[i];
+    }
     currentIndex = 0;
   }
 
   public ArraySequence(IntegerSequence otherseq){
     data = new int[otherseq.length()];
-    for(int i = 0; otherseq.hasNext(); i++){
+    for(int i = 0;otherseq.hasNext(); i++){
       data[i] = otherseq.next();
     }
   }
@@ -25,13 +28,14 @@ public class ArraySequence implements IntegerSequence{
   }
 
   public int next(){
-    if (data.length > currentIndex){
-      currentIndex++;
-    }
+    if(!hasNext()){
+      throw new NoSuchElementException("there is no next element");
+        }
+    currentIndex++;
     return data[currentIndex-1];
   }
-  
+
   public boolean hasNext(){
-    return(currentIndex < data.length);
+    return(currentIndex < length());
   }
 }

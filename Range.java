@@ -10,8 +10,6 @@ public class Range implements IntegerSequence{
     current = start;
   }
   public void reset(){
-    this.start = 0;
-    this.end = 0;
     current = 0;
   }
   public int length(){
@@ -23,12 +21,14 @@ public class Range implements IntegerSequence{
     return diff+1;
   }
   public boolean hasNext(){
-    return(current <= end);
+    return(current < end);
   }
 
   //@throws NoSuchElementException
   public int next()throws NoSuchElementException{
+    if (current == end) return end;
     current++;
+    if (current == start) return start; 
     return current;
   }
 
