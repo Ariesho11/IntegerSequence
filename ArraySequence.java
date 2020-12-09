@@ -8,23 +8,29 @@ public class ArraySequence implements IntegerSequence{
     data = other;
     currentIndex = 0;
   }
-  public ArraySequence(IntegerSequence otherseq){
 
+  public ArraySequence(IntegerSequence otherseq){
+    data = new int[otherseq.length()];
+    for(int i = 0; otherseq.hasNext(); i++){
+      data[i] = otherseq.next();
+    }
   }
+
   public void reset(){
     currentIndex = 0;
-    data = null;
   }
+
   public int length(){
-    return 0;
+    return data.length;
   }
+
   public int next(){
     if (data.length > currentIndex){
       currentIndex++;
-      if(currentIndex == 0) return data[currentIndex-1];
     }
-    return data[currentIndex];
+    return data[currentIndex-1];
   }
+  
   public boolean hasNext(){
     return(currentIndex < data.length);
   }
